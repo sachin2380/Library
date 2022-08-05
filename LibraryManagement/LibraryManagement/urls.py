@@ -1,4 +1,4 @@
-"""LibraryManagement URL Configuration
+"""Librarymanagement URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -15,10 +15,15 @@ Including another URLconf
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
 #from xml.etree.ElementInclude import include
+from xml.dom.minidom import Document
+from xml.etree.ElementInclude import include
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url('', include('Libsys.urls')),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
